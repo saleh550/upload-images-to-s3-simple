@@ -40,7 +40,7 @@ const upload=multer({
 app.post('/upload',upload.single("image"),(req,res)=>{
     console.log(req.file) 
     console.log("commit")
-})
+}) 
  
 app.get('/',(req,res)=>{
     res.send("hello world")
