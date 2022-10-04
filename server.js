@@ -32,16 +32,16 @@ const upload=multer({
             });
           },
         key:(req,file,cb)=>{
-            cb(null,file.originalname);
+            cb(null,`profileImages/image-${Date.now()}.png`);//profileImage/.. ,that give the file path in the bucket s3
         }
     })
 })
 
 app.post('/upload',upload.single("image"),(req,res)=>{
     console.log(req.file) 
-    console.log("commit")
+    res.send("successfuly")
 }) 
- 
+
 app.get('/',(req,res)=>{
     res.send("hello world")
 })
