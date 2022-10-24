@@ -32,14 +32,21 @@ const upload=multer({
             });
           },
         key:(req,file,cb)=>{
-            cb(null,`profileImages/image-${Date.now()}.png`);//profileImage/.. ,that give the file path in the bucket s3
+            cb(null,`simpleUpload/image-${Date.now()}.png`);//profileImage/.. ,that give the file path in the bucket s3
         }
     })
 })
 
 app.post('/upload',upload.single("image"),(req,res)=>{
-    console.log(req.file) 
-    res.send("successfuly")
+    // console.log(req.file) 
+    res.send("successful")
+}) 
+
+// upload multi images together /  in the postman in body -> form-data parm called images[] and then select files
+app.post('/upload/images',upload.array("images"),(req,res)=>{
+    console.log(req.files) 
+
+    res.send("successful")
 }) 
 
 app.get('/',(req,res)=>{
