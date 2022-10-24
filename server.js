@@ -45,7 +45,6 @@ app.post('/upload',upload.single("image"),(req,res)=>{
 // upload multi images together /  in the postman in body -> form-data parm called images[] and then select files
 app.post('/upload/images',upload.array("images"),(req,res)=>{
     console.log(req.files) 
-
     res.send("successful")
 }) 
 
